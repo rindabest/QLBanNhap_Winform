@@ -272,6 +272,7 @@ namespace QLBanNhap2_2_
         private void cbBox_MAHH_CTDH_Click(object sender, EventArgs e)
         {
             LoadCbbLoaiHang();
+            
         }
 
         private void LoadTableChiTietDH()
@@ -331,6 +332,37 @@ namespace QLBanNhap2_2_
             cbBox_Manv_BH.DataSource = DataProvider.LoadCSDL(query);
             cbBox_Manv_BH.DisplayMember = "TENNV";
             cbBox_Manv_BH.ValueMember = "MANV";
+        }
+
+        private void cbBox_MAHH_CTDH_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string connectionString = "Data Source=RINN\\SQLDEV2;Initial Catalog=dbms_nhom2;Integrated Security=True;TrustServerCertificate=True;";
+
+            // Lấy mã hàng hóa được chọn
+            string maHH = cbBox_MAHH_CTDH.SelectedValue.ToString();
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                // Gọi hàm SQL
+                string query = "SELECT dbo.fTimHHVaGiaBan(@maHH)";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@maHH", maHH);
+
+                try
+                {
+                    conn.Open();
+                    object result = cmd.ExecuteScalar();
+                    conn.Close();
+
+                    // Gán kết quả vào TextBox
+                    txtGiaBan.Text = result?.ToString() ?? "0";
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi khi truy vấn giá bán: " + ex.Message);
+                }
+            }
+
         }
     }
 }

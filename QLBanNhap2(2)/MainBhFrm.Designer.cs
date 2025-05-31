@@ -64,6 +64,8 @@
             this.label10 = new System.Windows.Forms.Label();
             this.cbBox_MAHH_CTDH = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtGiaBan = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvDH)).BeginInit();
@@ -322,6 +324,8 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.label11);
+            this.tabPage2.Controls.Add(this.txtGiaBan);
             this.tabPage2.Controls.Add(this.btn_finish_CTDH);
             this.tabPage2.Controls.Add(this.btn_dong_CTDH);
             this.tabPage2.Controls.Add(this.btn_luu_CTDH);
@@ -441,6 +445,7 @@
             this.cbBox_MAHH_CTDH.Name = "cbBox_MAHH_CTDH";
             this.cbBox_MAHH_CTDH.Size = new System.Drawing.Size(302, 36);
             this.cbBox_MAHH_CTDH.TabIndex = 61;
+            this.cbBox_MAHH_CTDH.SelectedIndexChanged += new System.EventHandler(this.cbBox_MAHH_CTDH_SelectedIndexChanged);
             this.cbBox_MAHH_CTDH.Click += new System.EventHandler(this.cbBox_MAHH_CTDH_Click);
             // 
             // label12
@@ -452,6 +457,23 @@
             this.label12.Size = new System.Drawing.Size(137, 28);
             this.label12.TabIndex = 60;
             this.label12.Text = "Mã Hàng Hoá:";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.ForeColor = System.Drawing.Color.Blue;
+            this.label11.Location = new System.Drawing.Point(680, 171);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(82, 28);
+            this.label11.TabIndex = 74;
+            this.label11.Text = "Giá Bán:";
+            // 
+            // txtGiaBan
+            // 
+            this.txtGiaBan.Location = new System.Drawing.Point(897, 171);
+            this.txtGiaBan.Name = "txtGiaBan";
+            this.txtGiaBan.Size = new System.Drawing.Size(302, 34);
+            this.txtGiaBan.TabIndex = 73;
             // 
             // MainBhFrm
             // 
@@ -513,5 +535,7 @@
         private System.Windows.Forms.Button btn_finish_CTDH;
         private System.Windows.Forms.Button btn_xem_CTDH;
         private System.Windows.Forms.ComboBox cbBox_Manv_BH;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox txtGiaBan;
     }
 }
