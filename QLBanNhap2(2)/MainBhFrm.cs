@@ -208,21 +208,7 @@ namespace QLBanNhap2_2_
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            string maDonHang = txtMaDonHang.Text;
-            string query = $"DELETE FROM BANHANG WHERE MAHD = '{maDonHang}'";
-            int kq = DataProvider.ThaoTacCSDL(query);
-            if (kq > 0)
-            {
-                MessageBox.Show("Xóa đơn hàng thành công");
-                LoadTableDonHang();
-                UnableControls(new List<Control> { txtMaDonHang, txtMaKhachHang, cbBox_Manv_BH, txtTongTien, dateTimePickerDH, btnLuu });
-                ResetText(new List<Control> { txtMaDonHang, txtMaKhachHang, cbBox_Manv_BH, dateTimePickerDH, txtTongTien });
-
-            }
-            else
-            {
-                MessageBox.Show("Xóa đơn hàng thất bại");
-            }
+            ResetText(new List<Control> { txtMaDonHang, txtMaKhachHang, cbBox_Manv_BH, dateTimePickerDH, txtTongTien });
         }
 
         private void btnTimDHtheoMa_Click(object sender, EventArgs e)
