@@ -50,6 +50,22 @@ namespace QLBanNhap2_2_
         {
             LoadTableKhachHang();
             UnableControls(new List<Control> { txtBox_Makh_Kh, txtBox_TenKh_Kh, txtBox_Sodt_Kh, txtBox_diachi_KH, btn_luu_kh, btn_capnhat_kh, btn_xoa_kh });
+
+            string quyen = PhanQuyen.Instance.Quyen;
+
+            switch (quyen)
+            {
+                case "Chu":
+                    {
+                        // Toàn quyền, không cần giới hạn gì
+                        break;
+                    }
+                case "BanHang":
+                    {
+                        UnableControls(new List<Control> { btn_capnhat_kh, btn_xoa_kh });
+                        break;
+                    }
+            }
         }
 
         private void btn_them_kh_Click(object sender, EventArgs e)
@@ -127,6 +143,22 @@ namespace QLBanNhap2_2_
                 EnableControls(new List<Control> { txtBox_TenKh_Kh, txtBox_Sodt_Kh, txtBox_diachi_KH, btn_luu_kh, btn_capnhat_kh, btn_xoa_kh });
                 txtBox_Makh_Kh.Enabled = false;
             }
+            string quyen = PhanQuyen.Instance.Quyen;
+
+            switch (quyen)
+            {
+                case "Chu":
+                    {
+                        // Toàn quyền, không cần giới hạn gì
+                        break;
+                    }
+                case "BanHang":
+                    {
+                        UnableControls(new List<Control> { btn_capnhat_kh, btn_xoa_kh });
+                        break;
+                    }
+            }
+
         }
 
         private void btn_capnhat_kh_Click(object sender, EventArgs e)

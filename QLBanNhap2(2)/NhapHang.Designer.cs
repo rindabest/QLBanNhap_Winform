@@ -201,6 +201,7 @@
             // 
             // dtp_NgayLap
             // 
+            this.dtp_NgayLap.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtp_NgayLap.Location = new System.Drawing.Point(452, 230);
             this.dtp_NgayLap.Name = "dtp_NgayLap";
             this.dtp_NgayLap.Size = new System.Drawing.Size(364, 34);
@@ -392,9 +393,10 @@
             // 
             // dtp_nsx_CCCT
             // 
+            this.dtp_nsx_CCCT.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtp_nsx_CCCT.Location = new System.Drawing.Point(282, 231);
             this.dtp_nsx_CCCT.Name = "dtp_nsx_CCCT";
-            this.dtp_nsx_CCCT.Size = new System.Drawing.Size(348, 34);
+            this.dtp_nsx_CCCT.Size = new System.Drawing.Size(302, 34);
             this.dtp_nsx_CCCT.TabIndex = 42;
             // 
             // cbBox_MAHH_CCCT

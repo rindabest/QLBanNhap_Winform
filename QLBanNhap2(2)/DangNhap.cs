@@ -79,7 +79,7 @@ namespace QLBanNhap2_2_
                         if (isValid == 1)
                         {
                             Main main = new Main();
-                            main.Show();
+                            //main.Show();
                         }
                         else
                         {
@@ -87,7 +87,35 @@ namespace QLBanNhap2_2_
                         }
                     }
                 }
+                string userName = txtTenDangNhap.Text.Trim();
+                string passWord = txtMatKhau.Text.Trim();
+
+                using (SqlConnection connection = new SqlConnection("Data Source=RINN\\SQLDEV2;Initial Catalog=dbms_nhom2;Integrated Security=True;TrustServerCertificate=True"))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand("prPhanQuyen", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@TenDangNhap", userName);
+                        command.Parameters.AddWithValue("@MatKhau", EncryptMD5(passWord)); // nếu bạn lưu bằng MD5
+
+                        object rs = command.ExecuteScalar();
+                        string quyen = rs?.ToString();
+
+                        if (!string.IsNullOrEmpty(quyen))
+                        {
+                            PhanQuyen.Instance.TenDangNhap = userName;
+                            PhanQuyen.Instance.Quyen = quyen;
+
+                            Main main = new Main();
+                            main.Show();
+                        }
+                    }
+                }
             }
+
+
             catch (Exception ex)
             {
                 MessageBox.Show("Đã xảy ra lỗi: " + ex.Message);

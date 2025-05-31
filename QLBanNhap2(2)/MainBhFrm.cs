@@ -43,7 +43,24 @@ namespace QLBanNhap2_2_
         private void MainBhFrm_Load(object sender, EventArgs e)
         {
             this.Dock = DockStyle.Fill;
-            UnableControls(new List<Control> { txtMaDonHang, txtMaKhachHang, txtMaNhanVien, txtTongTien, dateTimePickerDH, btnLuu });
+            UnableControls(new List<Control> { txtMaDonHang, txtMaKhachHang, cbBox_Manv_BH, txtTongTien, dateTimePickerDH, btnLuu });
+
+            string quyen = PhanQuyen.Instance.Quyen;
+
+            switch (quyen)
+            {
+                case "Chu":
+                    {
+                        // Toàn quyền, không cần giới hạn gì
+                        break;
+                    }
+                case "BanHang":
+                    {
+                        UnableControls(new List<Control> { btnXoa, btnSua });
+                        break;
+                    }
+            }
+
         }
         private void LoadTableDonHang()
         {
@@ -69,8 +86,8 @@ namespace QLBanNhap2_2_
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            EnableControls(new List<Control> { txtMaDonHang, txtMaKhachHang, txtMaNhanVien, txtTongTien, dateTimePickerDH, btnLuu });
-            ResetText(new List<Control> { txtMaDonHang, txtMaKhachHang, txtMaNhanVien, dateTimePickerDH, txtTongTien });
+            EnableControls(new List<Control> { txtMaDonHang, txtMaKhachHang, cbBox_Manv_BH, txtTongTien, dateTimePickerDH, btnLuu });
+            ResetText(new List<Control> { txtMaDonHang, txtMaKhachHang, cbBox_Manv_BH, dateTimePickerDH, txtTongTien });
             txtMaDonHang.Focus();
 
             string connectionString = "Data Source=RINN\\SQLDEV2;Initial Catalog=dbms_nhom2;Integrated Security=True;TrustServerCertificate=True";
@@ -113,7 +130,7 @@ namespace QLBanNhap2_2_
         {
             string maDonHang = txtMaDonHang.Text;
             string maKhachHang = txtMaKhachHang.Text;
-            string maNhanVien = txtMaNhanVien.Text;
+            string maNhanVien = cbBox_Manv_BH.SelectedValue.ToString(); // Lấy giá trị từ ComboBox
             string ngayHD = dateTimePickerDH.Value.ToString("yyyy-MM-dd");
 
             string query = $"INSERT INTO BANHANG (MAHD, MAKH, MANV, NGAYHD) VALUES ('{maDonHang}', '{maKhachHang}', '{maNhanVien}', '{ngayHD}')";
@@ -122,8 +139,8 @@ namespace QLBanNhap2_2_
             {
                 MessageBox.Show("Thêm don hang thành công");
                 LoadDHmoi();
-                UnableControls(new List<Control> { txtMaDonHang, txtMaKhachHang, txtMaNhanVien, txtTongTien, dateTimePickerDH, btnLuu });
-                ResetText(new List<Control> { txtMaDonHang, txtMaKhachHang, txtMaNhanVien, dateTimePickerDH, txtTongTien });
+                UnableControls(new List<Control> { txtMaDonHang, txtMaKhachHang, cbBox_Manv_BH, txtTongTien, dateTimePickerDH, btnLuu });
+                ResetText(new List<Control> { txtMaDonHang, txtMaKhachHang, cbBox_Manv_BH, dateTimePickerDH, txtTongTien });
 
                 
                 txt_MADH_CTDH.Text = maDonHang; // Gán mã đơn hàng vào ô txt_MADH_CTDH
@@ -141,13 +158,28 @@ namespace QLBanNhap2_2_
                 var dongDuocChon = dtgvDH.SelectedRows[0];
                 txtMaDonHang.Text = dongDuocChon.Cells["MAHD"].Value.ToString();
                 txtMaKhachHang.Text = dongDuocChon.Cells["MAKH"].Value.ToString();
-                txtMaNhanVien.Text = dongDuocChon.Cells["MANV"].Value.ToString();
+                cbBox_Manv_BH.Text = dongDuocChon.Cells["MANV"].Value.ToString();
                 txtTongTien.Text = dongDuocChon.Cells["TONGTIEN"].Value.ToString();
                 dateTimePickerDH.Value = DateTime.Parse(dongDuocChon.Cells["NGAYHD"].Value.ToString());
 
-                EnableControls(new List<Control> { txtMaKhachHang, txtMaNhanVien, txtTongTien, dateTimePickerDH, btnSua, btnXoa });
+                EnableControls(new List<Control> { txtMaKhachHang, cbBox_Manv_BH, txtTongTien, dateTimePickerDH, btnSua, btnXoa });
 
                 txtMaDonHang.Enabled = false; // Không cho phép sửa mã đơn hàng
+            }
+            string quyen = PhanQuyen.Instance.Quyen;
+
+            switch (quyen)
+            {
+                case "Chu":
+                    {
+                        // Toàn quyền, không cần giới hạn gì
+                        break;
+                    }
+                case "BanHang":
+                    {
+                        UnableControls(new List<Control> { btnXoa, btnSua });
+                        break;
+                    }
             }
         }
 
@@ -155,7 +187,7 @@ namespace QLBanNhap2_2_
         {
             string maDonHang = txtMaDonHang.Text;
             string maKhachHang = txtMaKhachHang.Text;
-            string maNhanVien = txtMaNhanVien.Text;
+            string maNhanVien = cbBox_Manv_BH.Text;
             string tongTien = txtTongTien.Text;
             string ngayHD = dateTimePickerDH.Value.ToString("yyyy-MM-dd");
 
@@ -165,8 +197,8 @@ namespace QLBanNhap2_2_
             {
                 MessageBox.Show("Sửa đơn hàng thành công");
                 LoadTableDonHang();
-                UnableControls(new List<Control> { txtMaDonHang, txtMaKhachHang, txtMaNhanVien, txtTongTien, dateTimePickerDH, btnSua, btnXoa });
-                ResetText(new List<Control> { txtMaDonHang, txtMaKhachHang, txtMaNhanVien, dateTimePickerDH, txtTongTien });
+                UnableControls(new List<Control> { txtMaDonHang, txtMaKhachHang, cbBox_Manv_BH, txtTongTien, dateTimePickerDH, btnSua, btnXoa });
+                ResetText(new List<Control> { txtMaDonHang, txtMaKhachHang, cbBox_Manv_BH, dateTimePickerDH, txtTongTien });
             }
             else
             {
@@ -183,8 +215,8 @@ namespace QLBanNhap2_2_
             {
                 MessageBox.Show("Xóa đơn hàng thành công");
                 LoadTableDonHang();
-                UnableControls(new List<Control> { txtMaDonHang, txtMaKhachHang, txtMaNhanVien, txtTongTien, dateTimePickerDH, btnLuu });
-                ResetText(new List<Control> { txtMaDonHang, txtMaKhachHang, txtMaNhanVien, dateTimePickerDH, txtTongTien });
+                UnableControls(new List<Control> { txtMaDonHang, txtMaKhachHang, cbBox_Manv_BH, txtTongTien, dateTimePickerDH, btnLuu });
+                ResetText(new List<Control> { txtMaDonHang, txtMaKhachHang, cbBox_Manv_BH, dateTimePickerDH, txtTongTien });
 
             }
             else
@@ -287,6 +319,18 @@ namespace QLBanNhap2_2_
         private void btn_xem_CTDH_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedTab = tabPage2;
+        }
+
+        private void cbBox_Manv_BH_Click(object sender, EventArgs e)
+        {
+            LoadCBmanv();
+        }
+        private void LoadCBmanv()
+        {
+            string query = "SELECT MANV, TENNV FROM NHANVIEN";
+            cbBox_Manv_BH.DataSource = DataProvider.LoadCSDL(query);
+            cbBox_Manv_BH.DisplayMember = "TENNV";
+            cbBox_Manv_BH.ValueMember = "MANV";
         }
     }
 }

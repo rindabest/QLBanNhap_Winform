@@ -153,6 +153,24 @@ namespace QLBanNhap2_2_
                 EnableControls(new List<Control> { txtBox_tenloaihang_LH, btn_luu_LH, btn_xoa_LH });
                 txtBox_mahang_LH.Enabled = false;
             }
+
+            string quyen = PhanQuyen.Instance.Quyen;
+
+            switch (quyen)
+            {
+                case "Chu":
+                    
+                    break;
+                case "BanHang":
+                    // Nhân viên bán hàng chỉ có quyền xem 
+                    UnableControls(new List<Control> { btn_them_LH, btn_capnhat_LH, btn_xoa_LH, btn_luu_LH});
+                    break;
+                case "KiemKho":
+                    // Nhân viên kho chỉ có quyền xem và thêm hàng hoá
+                    UnableControls(new List<Control> { btn_them_LH, btn_capnhat_LH, btn_xoa_LH, btn_luu_LH});
+                    break;
+            }
+
         }
 
         private void btn_capnhat_LH_Click_1(object sender, EventArgs e)
@@ -307,6 +325,23 @@ namespace QLBanNhap2_2_
                 txtBox_maHH_HH.Enabled = false;
                 Cbbox_LH_HH.Enabled = false;
             }
+            string quyen = PhanQuyen.Instance.Quyen;
+
+            switch (quyen)
+            {
+                case "Chu":
+                    break;
+                case "BanHang":
+                    // Nhân viên bán hàng chỉ có quyền xem 
+                    UnableControls(new List<Control> { btn_capnhap_HH, btn_luu_HH, btn_them_hh, btn_xoa_HH });
+                    break;
+                case "KiemKho":
+                    // Nhân viên kho chỉ có quyền xem và thêm hàng hoá
+                    UnableControls(new List<Control> { btn_capnhap_HH, btn_xoa_HH });
+                    EnableControls(new List<Control> { btn_them_hh , btn_luu_HH});
+                    break;
+            }
+
         }
 
         private void btn_xoa_HH_Click(object sender, EventArgs e)

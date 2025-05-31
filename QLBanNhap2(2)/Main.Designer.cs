@@ -41,6 +41,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel_Body = new System.Windows.Forms.Panel();
+            this.label_cv = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -195,6 +196,8 @@
             // 
             // panel2
             // 
+            this.panel2.BackColor = System.Drawing.SystemColors.Control;
+            this.panel2.Controls.Add(this.label_cv);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(230, 0);
@@ -214,11 +217,22 @@
             // 
             // panel_Body
             // 
+            this.panel_Body.BackColor = System.Drawing.SystemColors.Control;
             this.panel_Body.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_Body.Location = new System.Drawing.Point(230, 100);
             this.panel_Body.Name = "panel_Body";
             this.panel_Body.Size = new System.Drawing.Size(1181, 703);
             this.panel_Body.TabIndex = 2;
+            // 
+            // label_cv
+            // 
+            this.label_cv.AutoSize = true;
+            this.label_cv.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_cv.Location = new System.Drawing.Point(25, 34);
+            this.label_cv.Name = "label_cv";
+            this.label_cv.Size = new System.Drawing.Size(79, 31);
+            this.label_cv.TabIndex = 2;
+            this.label_cv.Text = "Home";
             // 
             // Main
             // 
@@ -232,6 +246,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
+            this.Load += new System.EventHandler(this.Main_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
@@ -255,5 +270,6 @@
         private System.Windows.Forms.Button btn_donhang_AD;
         private System.Windows.Forms.Button btn_hanghoa_AD;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label_cv;
     }
 }

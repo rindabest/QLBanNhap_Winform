@@ -46,11 +46,27 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.dtgv_hhdaban_tk = new System.Windows.Forms.DataGridView();
+            this.dtgv_mhsh = new System.Windows.Forms.DataGridView();
+            this.txtBox_dvt_MHSH = new System.Windows.Forms.TextBox();
+            this.txtBox_soluong_MHSH = new System.Windows.Forms.TextBox();
+            this.txtBox_tenHH_MHSH = new System.Windows.Forms.TextBox();
+            this.txtBox_maHH_MHSH = new System.Windows.Forms.TextBox();
+            this.label_gianhap_dienthoai = new System.Windows.Forms.Label();
+            this.label_soluong_dienthoai = new System.Windows.Forms.Label();
+            this.label_tendienthoai_dienthoai = new System.Windows.Forms.Label();
+            this.label_madienthoai_dienthoai = new System.Windows.Forms.Label();
+            this.label__hangdienthoai_dienthoai = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtbox_LH_MHSH = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_NvTopDS_Tk)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_dt_tk)).BeginInit();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgv_hhdaban_tk)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgv_mhsh)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -66,6 +82,7 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1300, 817);
             this.tabControl1.TabIndex = 0;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // tabPage1
             // 
@@ -170,6 +187,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.dtgv_hhdaban_tk);
             this.tabPage2.Controls.Add(this.btn_hienthiDT_TK);
             this.tabPage2.Controls.Add(this.dtgv_dt_tk);
             this.tabPage2.Controls.Add(this.cBox_QuyDT_TK);
@@ -203,13 +221,13 @@
             this.dtgv_dt_tk.AllowUserToOrderColumns = true;
             this.dtgv_dt_tk.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgv_dt_tk.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgv_dt_tk.Location = new System.Drawing.Point(7, 292);
+            this.dtgv_dt_tk.Location = new System.Drawing.Point(3, 292);
             this.dtgv_dt_tk.Name = "dtgv_dt_tk";
             this.dtgv_dt_tk.ReadOnly = true;
             this.dtgv_dt_tk.RowHeadersWidth = 51;
             this.dtgv_dt_tk.RowTemplate.Height = 24;
             this.dtgv_dt_tk.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgv_dt_tk.Size = new System.Drawing.Size(1277, 321);
+            this.dtgv_dt_tk.Size = new System.Drawing.Size(647, 321);
             this.dtgv_dt_tk.TabIndex = 33;
             // 
             // cBox_QuyDT_TK
@@ -269,13 +287,159 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.txtbox_LH_MHSH);
+            this.tabPage3.Controls.Add(this.dtgv_mhsh);
+            this.tabPage3.Controls.Add(this.txtBox_dvt_MHSH);
+            this.tabPage3.Controls.Add(this.txtBox_soluong_MHSH);
+            this.tabPage3.Controls.Add(this.txtBox_tenHH_MHSH);
+            this.tabPage3.Controls.Add(this.txtBox_maHH_MHSH);
+            this.tabPage3.Controls.Add(this.label_gianhap_dienthoai);
+            this.tabPage3.Controls.Add(this.label_soluong_dienthoai);
+            this.tabPage3.Controls.Add(this.label_tendienthoai_dienthoai);
+            this.tabPage3.Controls.Add(this.label_madienthoai_dienthoai);
+            this.tabPage3.Controls.Add(this.label__hangdienthoai_dienthoai);
+            this.tabPage3.Controls.Add(this.label5);
             this.tabPage3.Location = new System.Drawing.Point(4, 34);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage3.Size = new System.Drawing.Size(1292, 779);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Mặt Hàng Bán Nhiều";
+            this.tabPage3.Text = "Mặt Hàng Sắp Hết";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // dtgv_hhdaban_tk
+            // 
+            this.dtgv_hhdaban_tk.AllowUserToAddRows = false;
+            this.dtgv_hhdaban_tk.AllowUserToDeleteRows = false;
+            this.dtgv_hhdaban_tk.AllowUserToOrderColumns = true;
+            this.dtgv_hhdaban_tk.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtgv_hhdaban_tk.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgv_hhdaban_tk.Location = new System.Drawing.Point(646, 292);
+            this.dtgv_hhdaban_tk.Name = "dtgv_hhdaban_tk";
+            this.dtgv_hhdaban_tk.ReadOnly = true;
+            this.dtgv_hhdaban_tk.RowHeadersWidth = 51;
+            this.dtgv_hhdaban_tk.RowTemplate.Height = 24;
+            this.dtgv_hhdaban_tk.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtgv_hhdaban_tk.Size = new System.Drawing.Size(646, 321);
+            this.dtgv_hhdaban_tk.TabIndex = 35;
+            // 
+            // dtgv_mhsh
+            // 
+            this.dtgv_mhsh.AllowUserToAddRows = false;
+            this.dtgv_mhsh.AllowUserToDeleteRows = false;
+            this.dtgv_mhsh.AllowUserToOrderColumns = true;
+            this.dtgv_mhsh.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtgv_mhsh.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgv_mhsh.Location = new System.Drawing.Point(7, 292);
+            this.dtgv_mhsh.Name = "dtgv_mhsh";
+            this.dtgv_mhsh.ReadOnly = true;
+            this.dtgv_mhsh.RowHeadersWidth = 51;
+            this.dtgv_mhsh.RowTemplate.Height = 24;
+            this.dtgv_mhsh.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtgv_mhsh.Size = new System.Drawing.Size(1282, 335);
+            this.dtgv_mhsh.TabIndex = 70;
+            this.dtgv_mhsh.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgv_mhsh_CellContentClick);
+            // 
+            // txtBox_dvt_MHSH
+            // 
+            this.txtBox_dvt_MHSH.Location = new System.Drawing.Point(853, 98);
+            this.txtBox_dvt_MHSH.Name = "txtBox_dvt_MHSH";
+            this.txtBox_dvt_MHSH.Size = new System.Drawing.Size(181, 33);
+            this.txtBox_dvt_MHSH.TabIndex = 69;
+            // 
+            // txtBox_soluong_MHSH
+            // 
+            this.txtBox_soluong_MHSH.Location = new System.Drawing.Point(853, 166);
+            this.txtBox_soluong_MHSH.Name = "txtBox_soluong_MHSH";
+            this.txtBox_soluong_MHSH.Size = new System.Drawing.Size(181, 33);
+            this.txtBox_soluong_MHSH.TabIndex = 68;
+            // 
+            // txtBox_tenHH_MHSH
+            // 
+            this.txtBox_tenHH_MHSH.Location = new System.Drawing.Point(232, 225);
+            this.txtBox_tenHH_MHSH.Name = "txtBox_tenHH_MHSH";
+            this.txtBox_tenHH_MHSH.Size = new System.Drawing.Size(242, 33);
+            this.txtBox_tenHH_MHSH.TabIndex = 67;
+            // 
+            // txtBox_maHH_MHSH
+            // 
+            this.txtBox_maHH_MHSH.Location = new System.Drawing.Point(232, 165);
+            this.txtBox_maHH_MHSH.Name = "txtBox_maHH_MHSH";
+            this.txtBox_maHH_MHSH.Size = new System.Drawing.Size(242, 33);
+            this.txtBox_maHH_MHSH.TabIndex = 66;
+            // 
+            // label_gianhap_dienthoai
+            // 
+            this.label_gianhap_dienthoai.AutoSize = true;
+            this.label_gianhap_dienthoai.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label_gianhap_dienthoai.ForeColor = System.Drawing.Color.Blue;
+            this.label_gianhap_dienthoai.Location = new System.Drawing.Point(731, 109);
+            this.label_gianhap_dienthoai.Name = "label_gianhap_dienthoai";
+            this.label_gianhap_dienthoai.Size = new System.Drawing.Size(106, 22);
+            this.label_gianhap_dienthoai.TabIndex = 65;
+            this.label_gianhap_dienthoai.Text = "Đơn vị Tính";
+            // 
+            // label_soluong_dienthoai
+            // 
+            this.label_soluong_dienthoai.AutoSize = true;
+            this.label_soluong_dienthoai.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label_soluong_dienthoai.ForeColor = System.Drawing.Color.Blue;
+            this.label_soluong_dienthoai.Location = new System.Drawing.Point(731, 172);
+            this.label_soluong_dienthoai.Name = "label_soluong_dienthoai";
+            this.label_soluong_dienthoai.Size = new System.Drawing.Size(82, 22);
+            this.label_soluong_dienthoai.TabIndex = 64;
+            this.label_soluong_dienthoai.Text = "Số lượng";
+            // 
+            // label_tendienthoai_dienthoai
+            // 
+            this.label_tendienthoai_dienthoai.AutoSize = true;
+            this.label_tendienthoai_dienthoai.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label_tendienthoai_dienthoai.ForeColor = System.Drawing.Color.Blue;
+            this.label_tendienthoai_dienthoai.Location = new System.Drawing.Point(92, 235);
+            this.label_tendienthoai_dienthoai.Name = "label_tendienthoai_dienthoai";
+            this.label_tendienthoai_dienthoai.Size = new System.Drawing.Size(86, 22);
+            this.label_tendienthoai_dienthoai.TabIndex = 63;
+            this.label_tendienthoai_dienthoai.Text = "Tên Hàng";
+            // 
+            // label_madienthoai_dienthoai
+            // 
+            this.label_madienthoai_dienthoai.AutoSize = true;
+            this.label_madienthoai_dienthoai.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label_madienthoai_dienthoai.ForeColor = System.Drawing.Color.Blue;
+            this.label_madienthoai_dienthoai.Location = new System.Drawing.Point(92, 176);
+            this.label_madienthoai_dienthoai.Name = "label_madienthoai_dienthoai";
+            this.label_madienthoai_dienthoai.Size = new System.Drawing.Size(82, 22);
+            this.label_madienthoai_dienthoai.TabIndex = 62;
+            this.label_madienthoai_dienthoai.Text = "Mã Hàng";
+            // 
+            // label__hangdienthoai_dienthoai
+            // 
+            this.label__hangdienthoai_dienthoai.AutoSize = true;
+            this.label__hangdienthoai_dienthoai.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label__hangdienthoai_dienthoai.ForeColor = System.Drawing.Color.Blue;
+            this.label__hangdienthoai_dienthoai.Location = new System.Drawing.Point(92, 109);
+            this.label__hangdienthoai_dienthoai.Name = "label__hangdienthoai_dienthoai";
+            this.label__hangdienthoai_dienthoai.Size = new System.Drawing.Size(92, 22);
+            this.label__hangdienthoai_dienthoai.TabIndex = 61;
+            this.label__hangdienthoai_dienthoai.Text = "Loại Hàng";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Times New Roman", 16.2F);
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label5.Location = new System.Drawing.Point(426, 32);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(441, 33);
+            this.label5.TabIndex = 60;
+            this.label5.Text = "DANH SÁCH MẶT HÀNG SẮP HẾT";
+            // 
+            // txtbox_LH_MHSH
+            // 
+            this.txtbox_LH_MHSH.Location = new System.Drawing.Point(232, 98);
+            this.txtbox_LH_MHSH.Name = "txtbox_LH_MHSH";
+            this.txtbox_LH_MHSH.Size = new System.Drawing.Size(242, 33);
+            this.txtbox_LH_MHSH.TabIndex = 71;
             // 
             // ThongKe
             // 
@@ -295,6 +459,10 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_dt_tk)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgv_hhdaban_tk)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgv_mhsh)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -319,5 +487,18 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridView dtgv_hhdaban_tk;
+        private System.Windows.Forms.DataGridView dtgv_mhsh;
+        private System.Windows.Forms.TextBox txtBox_dvt_MHSH;
+        private System.Windows.Forms.TextBox txtBox_soluong_MHSH;
+        private System.Windows.Forms.TextBox txtBox_tenHH_MHSH;
+        private System.Windows.Forms.TextBox txtBox_maHH_MHSH;
+        private System.Windows.Forms.Label label_gianhap_dienthoai;
+        private System.Windows.Forms.Label label_soluong_dienthoai;
+        private System.Windows.Forms.Label label_tendienthoai_dienthoai;
+        private System.Windows.Forms.Label label_madienthoai_dienthoai;
+        private System.Windows.Forms.Label label__hangdienthoai_dienthoai;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtbox_LH_MHSH;
     }
 }

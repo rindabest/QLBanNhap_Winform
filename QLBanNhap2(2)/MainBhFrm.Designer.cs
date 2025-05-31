@@ -30,6 +30,9 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.cbBox_Manv_BH = new System.Windows.Forms.ComboBox();
+            this.btn_xem_CTDH = new System.Windows.Forms.Button();
+            this.btn_timKH = new System.Windows.Forms.Button();
             this.dateTimePickerDH = new System.Windows.Forms.DateTimePicker();
             this.btnLuu = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
@@ -40,7 +43,6 @@
             this.btnTimDHtheoMa = new System.Windows.Forms.Button();
             this.txtMaDHcantim = new System.Windows.Forms.TextBox();
             this.txtTongTien = new System.Windows.Forms.TextBox();
-            this.txtMaNhanVien = new System.Windows.Forms.TextBox();
             this.txtMaKhachHang = new System.Windows.Forms.TextBox();
             this.txtMaDonHang = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -51,7 +53,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.btn_timKH = new System.Windows.Forms.Button();
+            this.btn_finish_CTDH = new System.Windows.Forms.Button();
+            this.btn_dong_CTDH = new System.Windows.Forms.Button();
+            this.btn_luu_CTDH = new System.Windows.Forms.Button();
+            this.dtgv_CCDH = new System.Windows.Forms.DataGridView();
             this.txt_MADH_CTDH = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.txt_sl_CTDH = new System.Windows.Forms.TextBox();
@@ -59,11 +64,6 @@
             this.label10 = new System.Windows.Forms.Label();
             this.cbBox_MAHH_CTDH = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.dtgv_CCDH = new System.Windows.Forms.DataGridView();
-            this.btn_luu_CTDH = new System.Windows.Forms.Button();
-            this.btn_dong_CTDH = new System.Windows.Forms.Button();
-            this.btn_finish_CTDH = new System.Windows.Forms.Button();
-            this.btn_xem_CTDH = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvDH)).BeginInit();
@@ -84,6 +84,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.cbBox_Manv_BH);
             this.tabPage1.Controls.Add(this.btn_xem_CTDH);
             this.tabPage1.Controls.Add(this.btn_timKH);
             this.tabPage1.Controls.Add(this.dateTimePickerDH);
@@ -96,7 +97,6 @@
             this.tabPage1.Controls.Add(this.btnTimDHtheoMa);
             this.tabPage1.Controls.Add(this.txtMaDHcantim);
             this.tabPage1.Controls.Add(this.txtTongTien);
-            this.tabPage1.Controls.Add(this.txtMaNhanVien);
             this.tabPage1.Controls.Add(this.txtMaKhachHang);
             this.tabPage1.Controls.Add(this.txtMaDonHang);
             this.tabPage1.Controls.Add(this.label7);
@@ -114,11 +114,41 @@
             this.tabPage1.Text = "Đơn hàng";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // cbBox_Manv_BH
+            // 
+            this.cbBox_Manv_BH.FormattingEnabled = true;
+            this.cbBox_Manv_BH.Location = new System.Drawing.Point(178, 148);
+            this.cbBox_Manv_BH.Name = "cbBox_Manv_BH";
+            this.cbBox_Manv_BH.Size = new System.Drawing.Size(171, 36);
+            this.cbBox_Manv_BH.TabIndex = 43;
+            this.cbBox_Manv_BH.Click += new System.EventHandler(this.cbBox_Manv_BH_Click);
+            // 
+            // btn_xem_CTDH
+            // 
+            this.btn_xem_CTDH.Location = new System.Drawing.Point(520, 711);
+            this.btn_xem_CTDH.Name = "btn_xem_CTDH";
+            this.btn_xem_CTDH.Size = new System.Drawing.Size(186, 37);
+            this.btn_xem_CTDH.TabIndex = 42;
+            this.btn_xem_CTDH.Text = "Xem Chi Tiết";
+            this.btn_xem_CTDH.UseVisualStyleBackColor = true;
+            this.btn_xem_CTDH.Click += new System.EventHandler(this.btn_xem_CTDH_Click);
+            // 
+            // btn_timKH
+            // 
+            this.btn_timKH.Location = new System.Drawing.Point(369, 95);
+            this.btn_timKH.Name = "btn_timKH";
+            this.btn_timKH.Size = new System.Drawing.Size(95, 34);
+            this.btn_timKH.TabIndex = 41;
+            this.btn_timKH.Text = "Tìm KH";
+            this.btn_timKH.UseVisualStyleBackColor = true;
+            this.btn_timKH.Click += new System.EventHandler(this.btn_timKH_Click);
+            // 
             // dateTimePickerDH
             // 
-            this.dateTimePickerDH.Location = new System.Drawing.Point(684, 36);
+            this.dateTimePickerDH.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerDH.Location = new System.Drawing.Point(646, 38);
             this.dateTimePickerDH.Name = "dateTimePickerDH";
-            this.dateTimePickerDH.Size = new System.Drawing.Size(336, 34);
+            this.dateTimePickerDH.Size = new System.Drawing.Size(181, 34);
             this.dateTimePickerDH.TabIndex = 40;
             // 
             // btnLuu
@@ -210,13 +240,6 @@
             this.txtTongTien.Name = "txtTongTien";
             this.txtTongTien.Size = new System.Drawing.Size(181, 34);
             this.txtTongTien.TabIndex = 31;
-            // 
-            // txtMaNhanVien
-            // 
-            this.txtMaNhanVien.Location = new System.Drawing.Point(178, 148);
-            this.txtMaNhanVien.Name = "txtMaNhanVien";
-            this.txtMaNhanVien.Size = new System.Drawing.Size(171, 34);
-            this.txtMaNhanVien.TabIndex = 30;
             // 
             // txtMaKhachHang
             // 
@@ -318,15 +341,51 @@
             this.tabPage2.Text = "Chi Tiết Đơn Hàng";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // btn_timKH
+            // btn_finish_CTDH
             // 
-            this.btn_timKH.Location = new System.Drawing.Point(369, 95);
-            this.btn_timKH.Name = "btn_timKH";
-            this.btn_timKH.Size = new System.Drawing.Size(95, 34);
-            this.btn_timKH.TabIndex = 41;
-            this.btn_timKH.Text = "Tìm KH";
-            this.btn_timKH.UseVisualStyleBackColor = true;
-            this.btn_timKH.Click += new System.EventHandler(this.btn_timKH_Click);
+            this.btn_finish_CTDH.Location = new System.Drawing.Point(970, 717);
+            this.btn_finish_CTDH.Name = "btn_finish_CTDH";
+            this.btn_finish_CTDH.Size = new System.Drawing.Size(186, 37);
+            this.btn_finish_CTDH.TabIndex = 72;
+            this.btn_finish_CTDH.Text = "Hoàn thành";
+            this.btn_finish_CTDH.UseVisualStyleBackColor = true;
+            this.btn_finish_CTDH.Click += new System.EventHandler(this.btn_finish_CTDH_Click);
+            // 
+            // btn_dong_CTDH
+            // 
+            this.btn_dong_CTDH.Location = new System.Drawing.Point(570, 717);
+            this.btn_dong_CTDH.Name = "btn_dong_CTDH";
+            this.btn_dong_CTDH.Size = new System.Drawing.Size(186, 37);
+            this.btn_dong_CTDH.TabIndex = 71;
+            this.btn_dong_CTDH.Text = "Huỷ";
+            this.btn_dong_CTDH.UseVisualStyleBackColor = true;
+            this.btn_dong_CTDH.Click += new System.EventHandler(this.btn_dong_CTDH_Click);
+            // 
+            // btn_luu_CTDH
+            // 
+            this.btn_luu_CTDH.Location = new System.Drawing.Point(170, 717);
+            this.btn_luu_CTDH.Name = "btn_luu_CTDH";
+            this.btn_luu_CTDH.Size = new System.Drawing.Size(186, 37);
+            this.btn_luu_CTDH.TabIndex = 70;
+            this.btn_luu_CTDH.Text = "Lưu";
+            this.btn_luu_CTDH.UseVisualStyleBackColor = true;
+            this.btn_luu_CTDH.Click += new System.EventHandler(this.btn_luu_CTDH_Click);
+            // 
+            // dtgv_CCDH
+            // 
+            this.dtgv_CCDH.AllowUserToAddRows = false;
+            this.dtgv_CCDH.AllowUserToDeleteRows = false;
+            this.dtgv_CCDH.AllowUserToOrderColumns = true;
+            this.dtgv_CCDH.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtgv_CCDH.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgv_CCDH.Location = new System.Drawing.Point(26, 306);
+            this.dtgv_CCDH.Name = "dtgv_CCDH";
+            this.dtgv_CCDH.ReadOnly = true;
+            this.dtgv_CCDH.RowHeadersWidth = 51;
+            this.dtgv_CCDH.RowTemplate.Height = 24;
+            this.dtgv_CCDH.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtgv_CCDH.Size = new System.Drawing.Size(1244, 380);
+            this.dtgv_CCDH.TabIndex = 69;
             // 
             // txt_MADH_CTDH
             // 
@@ -394,62 +453,6 @@
             this.label12.TabIndex = 60;
             this.label12.Text = "Mã Hàng Hoá:";
             // 
-            // dtgv_CCDH
-            // 
-            this.dtgv_CCDH.AllowUserToAddRows = false;
-            this.dtgv_CCDH.AllowUserToDeleteRows = false;
-            this.dtgv_CCDH.AllowUserToOrderColumns = true;
-            this.dtgv_CCDH.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dtgv_CCDH.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgv_CCDH.Location = new System.Drawing.Point(26, 306);
-            this.dtgv_CCDH.Name = "dtgv_CCDH";
-            this.dtgv_CCDH.ReadOnly = true;
-            this.dtgv_CCDH.RowHeadersWidth = 51;
-            this.dtgv_CCDH.RowTemplate.Height = 24;
-            this.dtgv_CCDH.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgv_CCDH.Size = new System.Drawing.Size(1244, 380);
-            this.dtgv_CCDH.TabIndex = 69;
-            // 
-            // btn_luu_CTDH
-            // 
-            this.btn_luu_CTDH.Location = new System.Drawing.Point(170, 717);
-            this.btn_luu_CTDH.Name = "btn_luu_CTDH";
-            this.btn_luu_CTDH.Size = new System.Drawing.Size(186, 37);
-            this.btn_luu_CTDH.TabIndex = 70;
-            this.btn_luu_CTDH.Text = "Lưu";
-            this.btn_luu_CTDH.UseVisualStyleBackColor = true;
-            this.btn_luu_CTDH.Click += new System.EventHandler(this.btn_luu_CTDH_Click);
-            // 
-            // btn_dong_CTDH
-            // 
-            this.btn_dong_CTDH.Location = new System.Drawing.Point(570, 717);
-            this.btn_dong_CTDH.Name = "btn_dong_CTDH";
-            this.btn_dong_CTDH.Size = new System.Drawing.Size(186, 37);
-            this.btn_dong_CTDH.TabIndex = 71;
-            this.btn_dong_CTDH.Text = "Huỷ";
-            this.btn_dong_CTDH.UseVisualStyleBackColor = true;
-            this.btn_dong_CTDH.Click += new System.EventHandler(this.btn_dong_CTDH_Click);
-            // 
-            // btn_finish_CTDH
-            // 
-            this.btn_finish_CTDH.Location = new System.Drawing.Point(970, 717);
-            this.btn_finish_CTDH.Name = "btn_finish_CTDH";
-            this.btn_finish_CTDH.Size = new System.Drawing.Size(186, 37);
-            this.btn_finish_CTDH.TabIndex = 72;
-            this.btn_finish_CTDH.Text = "Hoàn thành";
-            this.btn_finish_CTDH.UseVisualStyleBackColor = true;
-            this.btn_finish_CTDH.Click += new System.EventHandler(this.btn_finish_CTDH_Click);
-            // 
-            // btn_xem_CTDH
-            // 
-            this.btn_xem_CTDH.Location = new System.Drawing.Point(520, 711);
-            this.btn_xem_CTDH.Name = "btn_xem_CTDH";
-            this.btn_xem_CTDH.Size = new System.Drawing.Size(186, 37);
-            this.btn_xem_CTDH.TabIndex = 42;
-            this.btn_xem_CTDH.Text = "Xem Chi Tiết";
-            this.btn_xem_CTDH.UseVisualStyleBackColor = true;
-            this.btn_xem_CTDH.Click += new System.EventHandler(this.btn_xem_CTDH_Click);
-            // 
             // MainBhFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
@@ -486,7 +489,6 @@
         private System.Windows.Forms.Button btnTimDHtheoMa;
         private System.Windows.Forms.TextBox txtMaDHcantim;
         private System.Windows.Forms.TextBox txtTongTien;
-        private System.Windows.Forms.TextBox txtMaNhanVien;
         private System.Windows.Forms.TextBox txtMaKhachHang;
         private System.Windows.Forms.TextBox txtMaDonHang;
         private System.Windows.Forms.Label label7;
@@ -510,5 +512,6 @@
         private System.Windows.Forms.Button btn_luu_CTDH;
         private System.Windows.Forms.Button btn_finish_CTDH;
         private System.Windows.Forms.Button btn_xem_CTDH;
+        private System.Windows.Forms.ComboBox cbBox_Manv_BH;
     }
 }

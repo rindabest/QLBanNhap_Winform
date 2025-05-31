@@ -42,6 +42,23 @@ namespace QLBanNhap2_2_
         {
             LoadTableNhaCungCap();
             UnableControls(new List<Control> { txtBox_Mancc_NCC, txtBox_Tenncc_NCC, txtBox_Sodt_NCC, txtBox_diachi_NCC, txtBox_CkNpp_NCC ,btn_luu_NCC, btn_capnhat_NCC, btn_xoa_NCC });
+
+            string quyen = PhanQuyen.Instance.Quyen;
+
+            switch (quyen)
+            {
+                case "Chu":
+                    {
+                        // Toàn quyền, không cần giới hạn gì
+                        break;
+                    }
+                case "KiemKho":
+                    {
+                        UnableControls(new List<Control> { btn_capnhat_NCC, btn_luu_NCC, btn_them_NCC, btn_xoa_NCC });
+                        break;
+                    }
+            }
+
         }
         private void LoadTableNhaCungCap()
         {
@@ -128,6 +145,23 @@ namespace QLBanNhap2_2_
                 EnableControls(new List<Control> { txtBox_Tenncc_NCC, txtBox_Sodt_NCC, txtBox_diachi_NCC, txtBox_CkNpp_NCC, btn_luu_NCC, btn_capnhat_NCC, btn_xoa_NCC });
                 txtBox_Mancc_NCC.Enabled = false;
             }
+
+            string quyen = PhanQuyen.Instance.Quyen;
+
+            switch (quyen)
+            {
+                case "Chu":
+                    {
+                        // Toàn quyền, không cần giới hạn gì
+                        break;
+                    }
+                case "KiemKho":
+                    {
+                        UnableControls(new List<Control> { btn_capnhat_NCC, btn_luu_NCC, btn_them_NCC, btn_xoa_NCC });
+                        break;
+                    }
+            }
+
         }
 
         private void btn_capnhat_NCC_Click(object sender, EventArgs e)
@@ -169,6 +203,11 @@ namespace QLBanNhap2_2_
             {
                 MessageBox.Show("Xóa nhà cung cấp thất bại");
             }
+        }
+
+        private void txtBox_Tenncc_NCC_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -87,10 +87,59 @@ namespace QLBanNhap2_2_
 
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("Bạn có chắc chắn muốn thoát không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show("Bạn có chắc chắn muốn thoát không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
             {
-                Dispose();
+                e.Cancel = true;
             }
+        }
+
+        public void UnableControls(List<Control> controls)
+        {
+            foreach (Control control in controls)
+            {
+                control.Enabled = false;
+            }
+        }
+
+        //ẩn các nút
+        public void HideControls(List<Control> controls)
+        {
+            foreach (Control control in controls)
+            {
+                control.Enabled = false;
+            }
+        }
+
+
+
+        private void Main_Load(object sender, EventArgs e)
+        {
+            string quyen = PhanQuyen.Instance.Quyen;
+
+            switch (quyen)
+            {
+                case "Chu":
+                    {
+                        // Toàn quyền, không cần giới hạn gì
+                        label_cv.Text = "Chức vụ: Chủ cửa hàng";
+                        break;
+                    }
+                case "BanHang":
+                    {
+                        label_cv.Text = "Chức vụ: Nhân Viên Bán Hàng";
+                        UnableControls(new List<Control> { btn_nhanvien_AD, btn_ncc_main, btn_nhaphang, btn_thongke });
+                        HideControls(new List<Control> { btn_nhanvien_AD, btn_ncc_main, btn_nhaphang, btn_thongke });
+                        break;
+                    }
+                case "KiemKho":
+                    {
+                        label_cv.Text = "Chức vụ: Nhân Viên Kiểm Kho";
+                        UnableControls(new List<Control> { btn_nhanvien_AD, btn_khachhang_AD, btn_donhang_AD, btn_thongke });
+                        HideControls(new List<Control> { btn_nhanvien_AD, btn_khachhang_AD, btn_donhang_AD, btn_thongke });
+                        break;
+                    }
+            }
+
         }
     }
 }

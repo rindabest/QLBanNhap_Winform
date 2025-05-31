@@ -97,11 +97,65 @@ namespace QLBanNhap2_2_
                     }
 
                 }
+                using (SqlConnection conn = new SqlConnection("Data Source=RINN\\SQLDEV2;Initial Catalog=dbms_nhom2;Integrated Security=True;TrustServerCertificate=True"))
+                {
+                    conn.Open();
+                    using (SqlCommand command = new SqlCommand("spTongBan", conn))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        // Add logic to convert quy to int if needed
+                        command.Parameters.AddWithValue("@quy", quy);
+                        command.Parameters.AddWithValue("@nam", nam);
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                        {
+                            DataTable dataTable = new DataTable();
+                            adapter.Fill(dataTable);
+                            dtgv_hhdaban_tk.DataSource = dataTable;
+                        }
+                    }
+                    if (dtgv_hhdaban_tk.Rows.Count == 0)
+                    {
+                        MessageBox.Show("Không có mặt hàng được bán trong " + quy + " Năm " + nam);
+                    }
+
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Đã xảy ra lỗi:" + ex.Message);
             }
+        }
+
+
+        private void Load_MHSH()
+        {
+            string query = $"select*from HANGHOA where SLTON < 60";
+            DataTable dt = new DataTable();
+            dt.Clear();
+            dt = DataProvider.LoadCSDL(query);
+            dtgv_mhsh.DataSource = dt;
+
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedTab == tabPage3)
+            {
+                Load_MHSH();
+            }
+        }
+
+        private void dtgv_mhsh_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dtgv_mhsh.SelectedRows.Count > 0)
+            {
+                var dongduocchon = dtgv_mhsh.SelectedRows[0];
+                txtBox_maHH_MHSH.Text = dongduocchon.Cells["MAHH"].Value.ToString();
+                txtBox_tenHH_MHSH.Text = dongduocchon.Cells["TENHH"].Value.ToString();
+                txtBox_soluong_MHSH.Text = dongduocchon.Cells["SLTON"].Value.ToString();
+                txtBox_dvt_MHSH.Text = dongduocchon.Cells["DVT"].Value.ToString();
+                txtbox_LH_MHSH.Text = dongduocchon.Cells["MANG"].Value.ToString();
+            }    
         }
     }
 }

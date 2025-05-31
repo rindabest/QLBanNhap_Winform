@@ -182,6 +182,7 @@
             this.txtBox_Tenncc_NCC.Name = "txtBox_Tenncc_NCC";
             this.txtBox_Tenncc_NCC.Size = new System.Drawing.Size(229, 30);
             this.txtBox_Tenncc_NCC.TabIndex = 35;
+            this.txtBox_Tenncc_NCC.TextChanged += new System.EventHandler(this.txtBox_Tenncc_NCC_TextChanged);
             // 
             // txtBox_Mancc_NCC
             // 
